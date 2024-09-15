@@ -2,7 +2,12 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				text: 'Crimson Pro, Georgia, Times New Roman, Times, serif',
+				title: 'Oswald, Verdana, Helvetica, Arial, sans-serif' 
+			}
+		},
 	},
 	plugins: [],
 }
