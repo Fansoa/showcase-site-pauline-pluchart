@@ -1,0 +1,27 @@
+<nav class="skiplinks" aria-label="Accès rapide">
+    <ul class="flex justify-center font-text text-xl text-primary">
+        <li class="p-2">
+            <a class="px-3 py-2" href="#header">En-tête</a>
+        </li>
+        <li class="p-2">
+            <a class="px-3 py-2" href="#main">Contenu principal</a>
+        </li>
+        <li class="p-2">
+            <a class="px-3 py-2" href="#footer">Pied de page</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .skiplinks {
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    .skiplinks:focus-within {
+        opacity: 1;
+        transform: unset;
+        position: unset;
+    }
+</style>
