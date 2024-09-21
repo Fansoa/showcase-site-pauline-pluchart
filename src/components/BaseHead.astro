@@ -1,0 +1,27 @@
+---
+    interface Props {
+        title: string;
+        description: string;
+        imageUrl: string;
+    }
+
+    const { title, description, imageUrl } = Astro.props
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+
+<!-- Open Graph Protocol / Facebook -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<!-- TODO: Après le premier deploiement, vérifier si l'url est correct (url du site, image du site)-->
+<meta property="og:url" content={Astro.url.origin} />
+<meta property="og:image" content={imageUrl} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<!-- TODO: Après le premier deploiement, vérifier si l'url est correct (url du site, image du site)-->
+<meta property="twitter:url" content={Astro.url.origin} />
+<meta property="twitter:image" content={imageUrl} />
