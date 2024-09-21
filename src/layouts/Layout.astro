@@ -1,26 +1,70 @@
 ---
-interface Props {
-	title: string;
-}
+	import BaseHead from '../components/BaseHead.astro'
+	import Header from '../components/Header.astro'
+	import Footer from '../components/Footer.astro'
+	import SkipLink from '../components/SkipLink.astro'
 
-const { title } = Astro.props;
+	interface Props {
+		title: string;
+		description: string;
+		imageUrl: string;
+	}
+
+	const { title, description, imageUrl } = Astro.props;
+
+	// TODO: Les valeurs ci-dessous seront à mettre à jour.
+	const schema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Pauline Pluchart",
+    "hasCertification": "Masseur-Kinésithérapeute",
+    "image": "URL de l'image professionnelle ou du logo",
+    "email": "pauline.pluchart@gmail.com",
+    "@id": "URL du site web",
+    "url": "https://www.son-site-web.com",
+    "address": {
+		"@type": "PostalAddress",
+        "addressLocality": "Neuilly-Plaisance",
+        "postalCode": "93360",
+        "addressCountry": "FR"
+    },
+    "areaServed": "Paris et sa proche banlieue",
+    "description": "Ateliers de Prévention des blessures pour les grimpeurs"
+}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
+		<!-- Global Metadata -->
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+
+		<!-- Font preloads -->
+		<link rel="preload" href="/fonts/CrimsonPro-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/CrimsonPro-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/Oswald-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+		<!-- Rich Snippet -->
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+		<BaseHead title={title} description={description} imageUrl={imageUrl} />
 	</head>
 	<body>
-		<slot />
+		<SkipLink/>
+		<Header className="shadow-[0px_3px_3px_0px_#dadada]" />
+		<main id="main">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 <style is:global>
+	html {
+		background-color: #F8F8F8;
+	}
 	@font-face {
 		font-family: 'Crimson Pro';
 		src: url('/fonts/CrimsonPro-Light.woff2') format('woff2');
