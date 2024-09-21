@@ -6,7 +6,10 @@ export default {
 			fontFamily: {
 				text: 'Crimson Pro, Georgia, Times New Roman, Times, serif',
 				title: 'Oswald, Verdana, Helvetica, Arial, sans-serif' 
-			}
+			},
+			colors: {
+				primary: '#615648'
+		}
 		},
 	},
 	plugins: [],
